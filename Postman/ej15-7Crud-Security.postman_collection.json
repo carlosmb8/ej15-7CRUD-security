@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "26f478b4-daeb-4097-a0b5-2e2b79864e5a",
+		"name": "ej15-7Crud-Security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22794309"
+	},
+	"item": [
+		{
+			"name": "/login con usuario normal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\":\"pepe1\",\r\n    \"clave\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login con usuario admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\":\"admin\",\r\n    \"clave\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listado personas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZXBlMSIsImV4cCI6MTY2NjYyNzk3MywiaWF0IjoxNjY2NTk5MTczLCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9VU0VSIn19.Vqay1ab02g3WhJBPKKCK9AVk9AJKmOTYAUMPJ_oTxiY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/personas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "aaaaa",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persona por nombre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2NjYyNzk5NiwiaWF0IjoxNjY2NTk5MTk2LCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9fQ._EKY62mBHwWYmkGHMy6Cw2vrM_6o1EoF7TwAKdOngU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/personas?name=Pepe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pepe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertar persona admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2NjYyNzk5NiwiaWF0IjoxNjY2NTk5MTk2LCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9fQ._EKY62mBHwWYmkGHMy6Cw2vrM_6o1EoF7TwAKdOngU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\":\"admin\",\r\n    \"password\":\"12345\",\r\n    \"name\":\"ADMIN\",\r\n    \"surname\":\"Gonzalez\",\r\n    \"company_email\":\"a@gmail.com\",\r\n    \"personal_email\":\"b@gmail.com\",\r\n    \"city\":\"jaen\",\r\n    \"active\":true,\r\n    \"created_date\":\"2022-08-25\",\r\n    \"imagen_url\":\"a.jpg\",\r\n    \"termination_date\":\"2022-08-25\",\r\n    \"admin\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/personas/insertar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas",
+						"insertar"
+					],
+					"query": [
+						{
+							"key": "id_persona",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "usuario",
+							"value": "carlos1",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Carlos",
+							"disabled": true
+						},
+						{
+							"key": "surname",
+							"value": "Martos",
+							"disabled": true
+						},
+						{
+							"key": "company_email",
+							"value": "a@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "personal_email",
+							"value": "b@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "Jaen",
+							"disabled": true
+						},
+						{
+							"key": "active",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "created_date",
+							"value": "25/08/2022",
+							"disabled": true
+						},
+						{
+							"key": "image_url",
+							"value": "hola.png",
+							"disabled": true
+						},
+						{
+							"key": "termination_date",
+							"value": "26/08/2022",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar persona",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2NjYyNzk5NiwiaWF0IjoxNjY2NTk5MTk2LCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9fQ._EKY62mBHwWYmkGHMy6Cw2vrM_6o1EoF7TwAKdOngU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"usuario\":\"carlos123\",\r\n    \"password\":\"12345\",\r\n    \"name\":\"Carlos\",\r\n    \"surname\":\"Martos\",\r\n    \"company_email\":\"a@gmail.com\",\r\n    \"personal_email\":\"b@gmail.com\",\r\n    \"city\":\"jaen\",\r\n    \"active\":true,\r\n    \"created_date\":\"2022-08-25\",\r\n    \"imagen_url\":\"a.jpg\",\r\n    \"termination_date\":\"2022-08-25\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/personas/editar?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas",
+						"editar"
+					],
+					"query": [
+						{
+							"key": "usuario",
+							"value": "carlos1",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Carlos",
+							"disabled": true
+						},
+						{
+							"key": "surname",
+							"value": "Martos",
+							"disabled": true
+						},
+						{
+							"key": "company_email",
+							"value": "a@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "personal_email",
+							"value": "b@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "city",
+							"value": "Jaen",
+							"disabled": true
+						},
+						{
+							"key": "active",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "created_date",
+							"value": "25/08/2022",
+							"disabled": true
+						},
+						{
+							"key": "image_url",
+							"value": "hola.png",
+							"disabled": true
+						},
+						{
+							"key": "termination_date",
+							"value": "26/08/2022",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar persona",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2NjYyNzk5NiwiaWF0IjoxNjY2NTk5MTk2LCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9fQ._EKY62mBHwWYmkGHMy6Cw2vrM_6o1EoF7TwAKdOngU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/personas/eliminar?id=6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dame persona por id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY2NjYyNzk5NiwiaWF0IjoxNjY2NTk5MTk2LCJyb2wiOnsiYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9fQ._EKY62mBHwWYmkGHMy6Cw2vrM_6o1EoF7TwAKdOngU8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/personas/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
